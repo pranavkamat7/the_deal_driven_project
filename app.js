@@ -1,36 +1,125 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-const path = require('path');
-const port = process.env.PORT || 8080;
-const ExpressError =require('./ExpressError');
+const mongoose = require("mongoose");
+const path = require("path");
 
-app.set('view engine','ejs');
-app.use(express.urlencoded({extended: true}));
-app.set('views',path.join(__dirname,'/views'));
+const port = process.env.PORT || 8080;
+const ExpressError = require("./ExpressError");
+const Admin = require("./models/admin");
+const Product = require("./models/product");
+
+// --------------------
+// APP CONFIG
+// --------------------
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// --------------------
+// DATABASE CONNECTION
+// --------------------
+async function main() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/TheDealDriven");
+  console.log("Connected Successfully to MongoDB");
+}
+main().catch(err => console.log(err));
 
-main()
-.then(()=>{
-    console.log('Connected Succefully')
-})
-.catch((err)=> console.log(err))
+// --------------------
+// ROUTES
+// --------------------
+app.get("/", (req, res) => {
+  res.send("Working");
+});
 
-async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/TheDealDriven')
-} 
+// --------------------
+// ADMIN AUTH
+// --------------------
 
-app.get('/',(req,res)=>{
-    res.send('Working')
-})
+// Admin Login Page
+app.get("/admin", (req, res) => {
+  res.render("admin/adminLogin.ejs");
+});
 
-app.use((err,req,res,next)=>{
-    let {status=500 , message="Some error occured"} = err;
-    res.status(status).send(message);
-})
+// Admin Login Logic
+app.post("/admin/login", async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
 
-app.listen(port,()=>{
-    console.log(`Listening on port ${port}...`)
-})
+    const admin = await Admin.findOne({ username });
+    if (!admin || admin.password !== password) {
+      return next(new ExpressError(401, "Invalid Username or Password"));
+    }
 
+    res.redirect("/admin/dashboard");
+  } catch (err) {
+    next(err);
+  }
+});
+
+// --------------------
+// ADMIN DASHBOARD
+// --------------------
+app.get("/admin/dashboard", async (req, res, next) => {
+  try {
+    const products = await Product.find({});
+    res.render("admin/adminDashboard.ejs", { products });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// --------------------
+// ADD PRODUCT
+// --------------------
+app.get("/admin/products/new", (req, res) => {
+  res.render("admin/addProduct.ejs");
+});
+
+app.post("/admin/products", async (req, res, next) => {
+  try {
+    const { name, description, link, price, image, category } = req.body;
+
+    await Product.create({
+      name,
+      description,
+      link,
+      price,
+      image,
+      category
+    });
+
+    res.redirect("/admin/dashboard");
+  } catch (err) {
+    next(err);
+  }
+});
+
+// --------------------
+// DELETE PRODUCT
+// --------------------
+app.post("/admin/products/:id/delete", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await Product.findByIdAndDelete(id);
+    res.redirect("/admin/dashboard");
+  } catch (err) {
+    next(err);
+  }
+});
+
+// --------------------
+// ERROR HANDLER
+// --------------------
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Something went wrong" } = err;
+  res.status(status).send(message);
+});
+
+// --------------------
+// SERVER
+// --------------------
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});

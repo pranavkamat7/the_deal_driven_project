@@ -1,0 +1,205 @@
+/* --------------------
+   RESET & GLOBAL
+-------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* --------------------
+   CONTAINER
+-------------------- */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* --------------------
+   HEADINGS
+-------------------- */
+h1, h2, h3 {
+  color: #222;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+/* --------------------
+   CARD
+-------------------- */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------
+   FORM
+-------------------- */
+form {
+  max-width: 450px;
+  margin: auto;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #2c5364;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(44, 83, 100, 0.15);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* --------------------
+   BUTTONS
+-------------------- */
+button, .btn {
+  background: linear-gradient(135deg, #2c5364, #0f2027);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Delete Button */
+.btn-danger {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+/* --------------------
+   LINKS
+-------------------- */
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2c5364;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------
+   DASHBOARD HEADER
+-------------------- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* --------------------
+   TABLE
+-------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background: #2c5364;
+  color: white;
+}
+
+th, td {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+tbody tr {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #f5f9fc;
+}
+
+img.product-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* --------------------
+   AUTH PAGES
+-------------------- */
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* --------------------
+   RESPONSIVE
+-------------------- */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 22px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  img.product-img {
+    width: 50px;
+    height: 50px;
+  }
+}

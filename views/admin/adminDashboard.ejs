@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="card dashboard-header">
+      <h2>Admin Dashboard</h2>
+      <a href="/admin/products/new" class="btn">➕ Add New Product</a>
+    </div>
+
+    <!-- PRODUCT LIST -->
+    <div class="card">
+      <h3>Existing Products</h3>
+
+      <% if (products.length === 0) { %>
+        <p>No products added yet.</p>
+      <% } else { %>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Link</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% products.forEach(product => { %>
+              <tr>
+                <td>
+                  <img
+                    src="<%= product.image %>"
+                    alt="product"
+                    class="product-img"
+                  />
+                </td>
+                <td><%= product.name %></td>
+                <td>₹<%= product.price %></td>
+                <td>
+                  <a href="<%= product.link %>" target="_blank">View</a>
+                </td>
+                <td>
+                  <form
+                    action="/admin/products/<%= product._id %>/delete"
+                    method="POST"
+                  >
+                    <button
+                      type="submit"
+                      class="btn btn-danger"
+                      onclick="return confirm('Delete this product?')"
+                    >
+                      Delete
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+      <% } %>
+    </div>
+
+  </div>
+
+</body>
+</html>
