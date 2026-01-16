@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const path = require('path')
+const port = process.env.PORT || 8080
 
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended: true}))
@@ -21,7 +22,7 @@ app.get('/',(req,res)=>{
     res.send('Working')
 })
 
-app.listen('8080',()=>{
-    console.log('Listening on port 8080...')
+app.listen(port,()=>{
+    console.log(`Listening on port ${port}...`)
 })
 
