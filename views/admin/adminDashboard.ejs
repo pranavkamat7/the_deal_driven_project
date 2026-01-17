@@ -36,37 +36,35 @@
           </thead>
 
           <tbody>
-            <% products.forEach(product => { %>
-              <tr>
-                <td>
-                  <img
-                    src="<%= product.image %>"
-                    alt="product"
-                    class="product-img"
-                  />
-                </td>
-                <td><%= product.name %></td>
-                <td>₹<%= product.price %></td>
-                <td>
-                  <a href="<%= product.link %>" target="_blank">View</a>
-                </td>
-                <td>
-                  <form
-                    action="/admin/products/<%= product._id %>/delete"
-                    method="POST"
-                  >
-                    <button
-                      type="submit"
-                      class="btn btn-danger"
-                      onclick="return confirm('Delete this product?')"
-                    >
-                      Delete
-                    </button>
-                  </form>
-                </td>
-              </tr>
-            <% }) %>
-          </tbody>
+              <% products.forEach(product => { %>
+                <tr>
+                  <td data-label="Image">
+                    <img src="<%= product.image %>" alt="product" class="product-img" />
+                  </td>
+                
+                  <td data-label="Name"><%= product.name %></td>
+                
+                  <td data-label="Price">₹<%= product.price %></td>
+                
+                  <td data-label="Link">
+                    <a href="<%= product.link %>" target="_blank">View</a>
+                  </td>
+                
+                  <td data-label="Action">
+                    <form action="/admin/products/<%= product._id %>/delete" method="POST">
+                      <button
+                        type="submit"
+                        class="btn btn-danger delete-btn"
+                        onclick="return confirm('Delete this product?')"
+                      >
+                        Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+
         </table>
 
       <% } %>

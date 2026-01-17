@@ -204,3 +204,153 @@ img.product-img {
   }
 }
 
+/* --------------------
+   EXTRA RESPONSIVE FIXES
+-------------------- */
+
+@media (max-width: 600px) {
+
+  body {
+    background: linear-gradient(180deg, #0f2027, #203a43);
+  }
+
+  .container {
+    margin: 14px auto;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  /* Header */
+  .dashboard-header {
+    gap: 10px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .dashboard-header .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* Form polish */
+  label {
+    font-size: 13px;
+  }
+
+  input,
+  textarea {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  button,
+  .btn {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  /* 🔥 TABLE → CARD STYLE */
+  table,
+  thead,
+  tbody,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    background: #fff;
+    margin-bottom: 14px;
+    padding: 14px;
+    border-radius: 16px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+    gap: 12px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #666;
+    flex-shrink: 0;
+  }
+
+  /* Image */
+  img.product-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+  }
+
+  /* 🔴 DELETE BUTTON FIX */
+  td form {
+    width: 100%;
+    text-align: end;
+  }
+
+  td .btn-danger {
+    width: auto;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 20px;
+    box-shadow: none;
+  }
+
+  /* Action row alignment */
+  td[data-label="Action"] {
+    justify-content: flex-end;
+  }
+
+  /* Links */
+  td a {
+    font-size: 13px;
+  }
+
+  /* Auth page */
+  .auth-card {
+    padding: 20px;
+  }
+
+  .btn-danger {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+}
+
+.btn-danger:hover {
+  transform: scale(0.97);
+}
+
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 992px) {
+  .container {
+    padding: 18px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+}
