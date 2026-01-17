@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
      <!-- Common CSS -->
   <link rel="stylesheet" href="/footer.css" />
@@ -30,12 +31,16 @@
 
     <div class="content-wrap">
       <div class="products">
-    <img src="/images/img1.jpg" alt="Image 1">
-    <img src="/images/img2.jpg" alt="Image 2">
-    <img src="/images/img3.jpg" alt="Image 3">
-    <img src="/images/img1.jpg" alt="Image 1">
-    <img src="/images/img2.jpg" alt="Image 2">
-    <img src="/images/img3.jpg" alt="Image 3">
+     <% for(let product of products){ %>
+      <div class="card" style="width: 18rem;">
+        <img src="<%= product.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name  %></h5>
+          <p class="card-text"><%= product.description %></p>
+          <a href="<%= product.link %>" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <% } %>
     
 </div>
 
@@ -58,7 +63,7 @@ setInterval(() => {
     // when last image reached
     if (index === 7) {
         setTimeout(() => {
-            track.style.transition = "none";   // ❗ stop animation
+            track.style.transition = "none";   // stop animation
             track.style.transform = "translateX(0%)";
             index = 0;
         }, 10); // match transition duration
@@ -66,6 +71,10 @@ setInterval(() => {
 }, 3000);
 
 </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 
 
 </html>
+
+

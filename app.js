@@ -29,9 +29,10 @@ main().catch(err => console.log(err));
 // --------------------
 // ROUTES
 // --------------------
-app.get("/", (req, res) => {
+app.get("/", async(req, res) => {
   // res.send("Working");
-  res.render("Home")
+  let products = await Product.find({})
+  res.render("Home",{products})
 });
 
 // --------------------
