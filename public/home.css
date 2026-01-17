@@ -1,0 +1,32 @@
+.products {
+    display: flex;           /* arrange images in a row */
+    flex-wrap: wrap;         /* wrap to next line if screen is small */
+    gap: 2rem;               /* space between images */
+    justify-content: center; /* center the row */
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.auto-slider {
+    width: 100%;            /* full width */
+    overflow: hidden;        /* hide images outside the container */
+    position: relative;
+    max-width: 75%;        /* optional max width */
+    margin: 2rem auto;       /* center the section */
+    border-radius: 10px;     /* optional rounding */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.slider-track {
+    display: flex;           /* arrange images in a row */
+    width: 200%;             /* double width because 2 images */
+    transition: transform 1s ease; /* smooth sliding */
+}
+
+.slider-track img {
+    width: 50%;              /* each image takes half of track */
+    height: auto;
+    object-fit: cover;
+}
+
+

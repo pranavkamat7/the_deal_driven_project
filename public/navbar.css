@@ -1,0 +1,140 @@
+/* General Navbar */
+.navbar {
+    background-color: #222; /* Flipkart blue */
+    padding: 0.5rem 2rem;
+    font-family: Arial, sans-serif;
+    color: #000000;
+}
+
+.logo-container {
+    margin-left: 5px;
+    
+    display: inline-block; /* container adapts to logo size */
+    
+    overflow: hidden;
+}
+
+.logo {
+    margin-right: 5px;
+    
+    width: 70%;
+    height: 70%;
+    max-width: 70%; /* ensure it doesn’t exceed container */
+    display: block;
+    border-radius: 10%; 
+}
+
+
+
+/* Container */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px 105px 15px 105px;
+}
+
+/* Logo */
+.navbar-brand img {
+    width: 120px;
+    height: auto;
+}
+
+/* Search Bar */
+.navbar-search {
+    flex: 1;
+    display: flex;
+    margin: 0 1rem;
+}
+
+.navbar-search input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+    background-color: #ffffff;
+}
+
+.navbar-search button {
+    background-color: #ffe500;
+    border: none;
+    padding: 0 1rem;
+    font-size: 1rem;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+}
+
+/* Right Links */
+.navbar-right {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown */
+.nav-link .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    color: #000;
+    min-width: 150px;
+    border-radius: 3px;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-link:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Cart */
+.nav-link.cart {
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-search {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .navbar-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+}

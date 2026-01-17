@@ -1,22 +1,31 @@
 {
-  "name": "thedealdrivenproject",
+  "name": "y",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/pranavkamat7/the_deal_driven_project#readme",
+  "bugs": {
+    "url": "https://github.com/pranavkamat7/the_deal_driven_project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranavkamat7/the_deal_driven_project.git"
+  },
+  "license": "ISC",
+  "author": "Pranav&Kaushik",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "Pranav&Kaushik",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "@mui/material": "^7.3.7",
     "@mui/styled-engine-sc": "^7.3.7",
     "bcrypt": "^6.0.0",
+    "bootstrap": "^5.3.8",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
-    "mongoose": "^9.1.3",
+    "mongoose": "^9.1.4",
     "styled-components": "^6.3.8"
   }
 }

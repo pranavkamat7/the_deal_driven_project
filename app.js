@@ -30,7 +30,8 @@ main().catch(err => console.log(err));
 // ROUTES
 // --------------------
 app.get("/", (req, res) => {
-  res.send("Working");
+  // res.send("Working");
+  res.render("Home")
 });
 
 // --------------------

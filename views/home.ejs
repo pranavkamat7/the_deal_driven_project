@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+     <!-- Common CSS -->
+  <link rel="stylesheet" href="/footer.css" />
+  <link rel="stylesheet" href="/home.css" />
+
+</head>
+<body>
+  <div class="page-container">
+    <%- include("navbar") %>
+
+    <section class="auto-slider">
+  <div class="slider-track">
+    <img src="/images/Banner1.png" alt="Image 1">
+    <img src="/images/Banner2.png" alt="Image 2">
+    <img src="/images/Banner1.png" alt="Image 1">
+    <img src="/images/Banner2.png" alt="Image 2">
+    <img src="/images/Banner1.png" alt="Image 1">
+    <img src="/images/Banner2.png" alt="Image 2">
+    <img src="/images/Banner1.png" alt="Image 1">
+    <img src="/images/Banner2.png" alt="Image 2">
+    
+  </div>
+</section>
+
+    <div class="content-wrap">
+      <div class="products">
+    <img src="/images/img1.jpg" alt="Image 1">
+    <img src="/images/img2.jpg" alt="Image 2">
+    <img src="/images/img3.jpg" alt="Image 3">
+    <img src="/images/img1.jpg" alt="Image 1">
+    <img src="/images/img2.jpg" alt="Image 2">
+    <img src="/images/img3.jpg" alt="Image 3">
+    
+</div>
+
+    </div>
+
+    <%- include("footer") %>
+  </div>
+</body>
+<script>
+const track = document.querySelector(".slider-track");
+let index = 0;
+
+setInterval(() => {
+    index++;
+
+    // slide left
+    track.style.transition = "transform 1s ease-in-out";
+    track.style.transform = `translateX(-${index * 50}%)`;
+
+    // when last image reached
+    if (index === 7) {
+        setTimeout(() => {
+            track.style.transition = "none";   // ❗ stop animation
+            track.style.transform = "translateX(0%)";
+            index = 0;
+        }, 10); // match transition duration
+    }
+}, 3000);
+
+</script>
+
+
+</html>
