@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
+require("dotenv").config();
 
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
@@ -21,8 +22,10 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/TheDealDriven");
-  console.log("Connected Successfully to MongoDB");
+  await mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
+  .catch(err => console.error(err));
+
 }
 main().catch(err => console.log(err));
 
