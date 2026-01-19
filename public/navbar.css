@@ -1,140 +1,128 @@
-/* General Navbar */
-.navbar {
-    background-color: #222; /* Flipkart blue */
-    padding: 0.5rem 2rem;
-    font-family: Arial, sans-serif;
-    color: #000000;
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo-container {
-    margin-left: 5px;
-    
-    display: inline-block; /* container adapts to logo size */
-    
-    overflow: hidden;
+/* ================= NAVBAR ================= */
+.main-navbar {
+  background: #2874f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo {
-    margin-right: 5px;
-    
-    width: 70%;
-    height: 70%;
-    max-width: 70%; /* ensure it doesn’t exceed container */
-    display: block;
-    border-radius: 10%; 
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-
-
-/* Container */
-.navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 15px 105px 15px 105px;
+/* ================= LOGO ================= */
+.nav-logo img {
+  height: 40px;
+  border-radius: 8px;
 }
 
-/* Logo */
-.navbar-brand img {
-    width: 120px;
-    height: auto;
+/* ================= SEARCH ================= */
+.nav-search {
+  flex: 1;
+  max-width: 900px; /* keeps it centered & small */
+  display: flex;
 }
 
-/* Search Bar */
-.navbar-search {
-    flex: 1;
-    display: flex;
-    margin: 0 1rem;
+.nav-search input {
+  width: 100%;
+  padding: 9px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  border-radius: 5px 0 0 5px;
 }
 
-.navbar-search input {
-    width: 100%;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    font-size: 1rem;
-    background-color: #ffffff;
+.nav-search button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0 14px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
 }
 
-.navbar-search button {
-    background-color: #ffe500;
-    border: none;
-    padding: 0 1rem;
-    font-size: 1rem;
-    border-radius: 0 2px 2px 0;
-    cursor: pointer;
-}
-
-/* Right Links */
-.navbar-right {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+/* ================= RIGHT SIDE ================= */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .nav-link {
-    color: #ffffff;
-    text-decoration: none;
-    position: relative;
-    padding: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Dropdown */
-.nav-link .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    color: #000;
-    min-width: 150px;
-    border-radius: 3px;
-    padding: 0.5rem 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
+/* ================= HAMBURGER ================= */
+.mobile-toggle {
+  display: none;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
 }
 
-.nav-link:hover .dropdown-menu {
-    display: block;
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  display: none;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
 
-.dropdown-menu li a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #000;
-    text-decoration: none;
+.mobile-menu a {
+  display: block;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-.dropdown-menu li a:hover {
-    background-color: #f1f1f1;
+.mobile-menu a:hover {
+  background: #f5f5f5;
 }
 
-/* Cart */
-.nav-link.cart {
-    font-weight: bold;
+.mobile-menu.active {
+  display: block;
 }
 
-/* Responsive */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-    .navbar-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
-    .navbar-search {
-        width: 100%;
-        margin: 0.5rem 0;
-    }
+  /* hide desktop links */
+  .nav-link {
+    display: none;
+  }
 
-    .navbar-right {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-    }
+  /* show hamburger on right */
+  .mobile-toggle {
+    display: block;
+  }
+
+  /* smaller search on mobile */
+  .nav-search {
+    max-width: 220px;
+  }
+
+  .nav-search input {
+    font-size: 13px;
+  }
 }

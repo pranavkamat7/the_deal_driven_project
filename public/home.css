@@ -1,32 +1,122 @@
-.products {
-    display: flex;           /* arrange images in a row */
-    flex-wrap: wrap;         /* wrap to next line if screen is small */
-    gap: 2rem;               /* space between images */
-    justify-content: center; /* center the row */
-    margin-top: 20px;
-    margin-bottom: 30px;
+/* ================================
+   GLOBAL
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background: #f1f3f6;
+  font-family: Roboto, Arial, sans-serif;
+  color: #212121;
+}
+
+/* ================================
+   SLIDER (LIKE IMAGE)
+================================ */
 .auto-slider {
-    width: 100%;            /* full width */
-    overflow: hidden;        /* hide images outside the container */
-    position: relative;
-    max-width: 75%;        /* optional max width */
-    margin: 2rem auto;       /* center the section */
-    border-radius: 10px;     /* optional rounding */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
 }
 
 .slider-track {
-    display: flex;           /* arrange images in a row */
-    width: 200%;             /* double width because 2 images */
-    transition: transform 1s ease; /* smooth sliding */
+  display: flex;
+  width: 200%;
+  animation: infiniteSlide 12s linear infinite;
 }
 
 .slider-track img {
-    width: 50%;              /* each image takes half of track */
-    height: auto;
-    object-fit: cover;
+  width: 50%;
+  height: 340px;
+  object-fit: cover;
 }
 
+@keyframes infiniteSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
+/* ================================
+   TODAY DEALS SECTION
+================================ */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* ================================
+   PRODUCT CARD (MATCH IMAGE)
+================================ */
+.product-card {
+  background: #fff;
+  border-radius: 4px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+
+.product-card img {
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.product-name {
+  font-size: .9rem;
+  font-weight: 500;
+  height: 36px;
+  overflow: hidden;
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #388e3c;
+}
+
+/* ================================
+   BUY BUTTON
+================================ */
+.product-card .btn {
+  margin-top: 6px;
+  font-size: .8rem;
+  border-radius: 2px;
+}
+
+/* ================================
+   FEATURE STRIP
+================================ */
+.feature-strip {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+}
+
+.feature-strip p {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .slider-track img {
+    height: 200px;
+  }
+}

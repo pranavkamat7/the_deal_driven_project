@@ -3,36 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flipkart-style Navbar</title>
+  <title>Navbar</title>
   <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="navbar-container">
-    <!-- Logo -->
-     <div class="logo-container">
-    <a href="#" class="navbar-brand">
-      
-      <img class="logo" src="/images/logo.jpg" alt="Logo">
-    </a>
-    
+<nav class="main-navbar">
+  <div class="nav-container">
+
+    <!-- LEFT: LOGO -->
+    <div class="nav-logo">
+      <img src="/images/logo.jpg" alt="DealDriven">
     </div>
 
-    <!-- Search Bar -->
-    <div class="navbar-search">
-      <input type="text" placeholder="Search for products, brands and more">
-      <button>Search</button>
+    <!-- MIDDLE: SEARCH -->
+    <div class="nav-search">
+      <input type="text" placeholder="Search for items...">
+      <button class="search-btn">
+  <span class="search-text">Search</span>
+  <!-- <span class="search-icon">🔍</span> -->
+</button>
+
     </div>
 
-    <!-- Right Links -->
-    <div class="navbar-right">
+    <!-- RIGHT: LINKS + HAMBURGER -->
+    <div class="nav-right">
       <a href="#" class="nav-link">Dashboard</a>
       <a href="#" class="nav-link">About</a>
       <a href="#" class="nav-link">Contact Us</a>
-     
+
+      <span class="mobile-toggle" onclick="toggleMobile()">☰</span>
     </div>
+
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#">Dashboard</a>
+  <a href="#">About</a>
+  <a href="#">Contact Us</a>
+</div>
+
+<script>
+function toggleMobile() {
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
+</script>
+
+
+
+
 </body>
 </html>
