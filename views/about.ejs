@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - DealDriven</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      margin-top: -10px;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f1f1f;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #1f1f1f;
+      margin-top: 30px;
+    }
+
+    p {
+      margin: 15px 0;
+    }
+
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .team-member {
+      flex: 1 1 200px;
+      text-align: center;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .team-member h3 {
+      margin: 10px 0 5px 0;
+    }
+
+    .team-member p {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<%- include("navbar") %>
+<div class="about-container">
+    
+  <h1>About DealDriven</h1>
+
+  <p>Welcome to <strong>DealDriven</strong> – your trusted destination for high-quality products at unbeatable prices. Our mission is to provide a seamless shopping experience where customers can find exactly what they need, quickly and reliably.</p>
+
+  <h2>Our Story</h2>
+  <p>Founded with a vision to make online shopping easier and more enjoyable, DealDriven has grown into a platform that serves thousands of customers. We offer a wide range of products across categories, ensuring quality and value with every purchase.</p>
+
+  <h2>Our Mission</h2>
+  <p>We aim to simplify online shopping by combining excellent product selection, competitive pricing, and exceptional customer service. Every step is designed to make your shopping experience smooth and satisfying.</p>
+</div>
+  <%- include("footer") %>
+</body>
+</html>

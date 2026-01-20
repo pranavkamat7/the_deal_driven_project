@@ -1,5 +1,5 @@
 /* ================================
-   PAGE SUPPORT
+   PAGE SUPPORT #ffc815 #fff315
 ================================ */
 html, body {
   height: 100%;
@@ -41,7 +41,7 @@ html, body {
 ================================ */
 .footer-section h2,
 .footer-section h3 {
-  color: #fff315;
+  color: #ffc815;
   font-size: 1.1rem;
   margin-bottom: 0.8rem;
 }
@@ -77,7 +77,7 @@ html, body {
 }
 
 .footer-section ul li a:hover {
-  color: #ffe500;
+  color: #ffc815;
 }
 
 /* ================================
@@ -103,7 +103,7 @@ html, body {
 }
 
 .social-icons a:hover {
-  background: #ffe500;
+  background: #ffc815;
   color: #222;
   transform: translateY(-3px);
 }

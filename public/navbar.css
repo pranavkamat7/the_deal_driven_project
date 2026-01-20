@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* ================= NAVBAR ================= */
@@ -11,55 +12,79 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 10px 12px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* ================= LOGO ================= */
 .nav-logo img {
-  height: 40px;
+  height: 35px;
   border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-logo img:hover {
+  transform: scale(1.05);
 }
 
 /* ================= SEARCH ================= */
 .nav-search {
   flex: 1;
-  max-width: 900px; /* keeps it centered & small */
+  max-width: 900px;
   display: flex;
+}
+
+.nav-search form {
+  display: flex;
+  width: 100%;
 }
 
 .nav-search input {
   width: 100%;
-  padding: 9px;
+  padding: 10px 12px;
   border: none;
   outline: none;
   font-size: 14px;
   border-radius: 5px 0 0 5px;
+  transition: box-shadow 0.3s ease;
+}
+
+.nav-search input:focus {
+  box-shadow: 0 0 6px #ffc815;
 }
 
 .nav-search button {
-  background: #fff315;
+  background: #ffc815;
   color: #1f1f1f;
   border: none;
-  padding: 0 14px;
+  padding: 0 16px;
   cursor: pointer;
   border-radius: 0 5px 5px 0;
   font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.nav-search button:hover {
+  background: #e6e600;
 }
 
 /* ================= RIGHT SIDE ================= */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .nav-link {
@@ -67,16 +92,18 @@
   text-decoration: none;
   font-size: 14px;
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover {
+  color: #ffc815;
   text-decoration: underline;
 }
 
 /* ================= HAMBURGER ================= */
 .mobile-toggle {
   display: none;
-  font-size: 22px;
+  font-size: 24px;
   color: #fff;
   cursor: pointer;
 }
@@ -84,46 +111,66 @@
 /* ================= MOBILE MENU ================= */
 .mobile-menu {
   display: none;
-  background: #fff;
+  background: #222;
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  position: sticky;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  flex-direction: column;  
+  align-items: center;     
+  padding: 10px 0;
+
 }
 
 .mobile-menu a {
   display: block;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  color: #222;
+  padding: 12px 20px;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
+  width: 100%;            /* Optional: full width for easy tapping */
+  text-align: center;      /* Center text */
+  /* border-bottom: 1px solid #eee; */
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .mobile-menu a:hover {
-  background: #f5f5f5;
+  background: #ffc815;     /* Brand yellow hover */
+  color: #1f1f1f;
 }
 
 .mobile-menu.active {
-  display: block;
+  display: flex;
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
 
-  /* hide desktop links */
+  /* Hide desktop links */
   .nav-link {
     display: none;
   }
 
-  /* show hamburger on right */
+  /* Show hamburger */
   .mobile-toggle {
     display: block;
   }
 
-  /* smaller search on mobile */
+  /* Adjust search on mobile */
   .nav-search {
-    max-width: 220px;
+    max-width: 200px;
   }
 
   .nav-search input {
     font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .nav-search button {
+    padding: 0 12px;
+    font-size: 13px;
   }
 }
+

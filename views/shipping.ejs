@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping Information - DealDriven</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      margin-top: -10px;
+    }
+
+    .shipping-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f1f1f;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 25px;
+      color: #1f1f1f;
+    }
+
+    p {
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+<%- include("navbar") %>
+<div class="shipping-container">
+  <h1>Shipping Information</h1>
+
+  <p>At DealDriven, we are committed to delivering your orders quickly and safely. Below is everything you need to know about our shipping process:</p>
+
+  <h2>1. Shipping Methods</h2>
+  <p>We offer multiple shipping options to suit your needs, including standard and express delivery. Shipping charges may vary based on location and delivery speed.</p>
+
+  <h2>2. Delivery Time</h2>
+  <p>Estimated delivery times are as follows:</p>
+  <ul>
+    <li>Standard Delivery: 5-7 business days</li>
+    <li>Express Delivery: 2-3 business days</li>
+  </ul>
+  <p>Delivery times may vary depending on your location and any unforeseen circumstances.</p>
+
+  <h2>3. Tracking Your Order</h2>
+  <p>Once your order is shipped, you will receive a tracking number via email. Use this number to track your shipment and get real-time updates on its status.</p>
+
+  <h2>4. International Shipping</h2>
+  <p>Currently, we only ship within India. We are working on expanding our delivery services to international locations soon.</p>
+
+  <h2>5. Shipping Issues</h2>
+  <p>If your order is delayed, lost, or damaged during transit, please contact our customer support team immediately. We will assist you in resolving the issue promptly.</p>
+
+  <h2>6. Packaging</h2>
+  <p>All products are carefully packaged to ensure they arrive safely. We use sturdy packaging materials to protect your items during shipping.</p>
+
+</div>
+<%- include("footer") %>
+</body>
+</html>

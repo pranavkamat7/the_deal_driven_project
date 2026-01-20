@@ -4,37 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navbar</title>
-  <link rel="stylesheet" href="navbar.css">
-  <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="navbar.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
+<!-- MAIN NAVBAR -->
 <nav class="main-navbar">
   <div class="nav-container">
 
     <!-- LEFT: LOGO -->
     <div class="nav-logo">
-      <img src="/images/logo.jpg" alt="DealDriven">
+      <a href="/"><img src="/images/logo.jpg" alt="DealDriven"></a>
     </div>
 
-    <!-- MIDDLE: SEARCH -->
+    <!-- MIDDLE: SEARCH FORM -->
     <div class="nav-search">
-      <input type="text" placeholder="Search for items...">
-      <button class="search-btn">
-  <span class="search-text">Search</span>
-  <!-- <span class="search-icon">🔍</span> -->
-</button>
-
+      <form action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search for items..." required>
+        <button type="submit" class="search-btn">
+          <span class="search-text">Search</span>
+          <!-- <i class="fa fa-search search-icon"></i> -->
+        </button>
+      </form>
     </div>
 
     <!-- RIGHT: LINKS + HAMBURGER -->
     <div class="nav-right">
-      <a href="#" class="nav-link">Dashboard</a>
-      <a href="#" class="nav-link">About</a>
-      <a href="#" class="nav-link">Contact Us</a>
+      <a href="/admin" class="nav-link">Dashboard</a>
+      <a href="/about" class="nav-link">About</a>
+      <a href="/contact" class="nav-link">Contact Us</a>
 
+      <!-- Hamburger for mobile -->
       <span class="mobile-toggle" onclick="toggleMobile()">☰</span>
     </div>
 
@@ -43,19 +48,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#">Dashboard</a>
-  <a href="#">About</a>
-  <a href="#">Contact Us</a>
+  <a href="/admin">Dashboard</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact Us</a>
 </div>
 
+<!-- SCRIPT -->
 <script>
-function toggleMobile() {
-  document.getElementById("mobileMenu").classList.toggle("active");
-}
+  function toggleMobile() {
+    document.getElementById("mobileMenu").classList.toggle("active");
+  }
 </script>
-
-
-
 
 </body>
 </html>

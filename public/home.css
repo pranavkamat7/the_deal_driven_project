@@ -69,10 +69,21 @@ body {
   box-shadow: 0 6px 18px rgba(0,0,0,.15);
 }
 
-.product-card img {
+/* IMAGE WRAPPER (NEW) */
+.product-image {
   height: 140px;
-  object-fit: contain;
+  overflow: hidden;          /* hides extra width/height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 8px;
+}
+
+/* IMAGE */
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;       /* keeps aspect ratio */
 }
 
 .product-name {
@@ -80,13 +91,25 @@ body {
   font-weight: 500;
   height: 36px;
   overflow: hidden;
+  margin-top: -10px;
 }
 
 .product-price {
   font-size: 1rem;
   font-weight: 700;
   color: #ad3120;
+  margin-top: -30px;
 }
+
+.no-products {
+  text-align: center;
+  font-size: 16px;
+  color: #ff4d4d;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+
 
 /* ================================
    BUY BUTTON
@@ -95,8 +118,8 @@ body {
   margin-top: 6px;
   font-size: .8rem;
   border-radius: 4px;
-  background: #fff315;
-  border-color: #fff315;
+  background: #ffc815;
+  border-color: #ffc815;
   color:#1f1f1f;
   font-weight: bold;
 }

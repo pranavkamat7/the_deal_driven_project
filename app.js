@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
-require("dotenv").config();
+
 
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
@@ -113,6 +114,49 @@ app.post("/admin/products/:id/delete", async (req, res, next) => {
     next(err);
   }
 });
+
+app.get("/search", async (req, res) => {
+    try {
+        const { query } = req.query; 
+        if (!query) return res.redirect("/"); 
+
+        
+        const products = await Product.find({
+            name: { $regex: query, $options: "i" } 
+        });
+
+      
+        res.render("home", { products }); 
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+});
+
+app.get("/about", async (req, res) => {
+  res.render('about')
+})
+
+app.get("/contact", async (req, res) => {
+  res.render('contact')
+})
+
+app.get("/faq", async (req, res) => {
+  res.render('faq')
+})
+
+app.get("/shipping", async (req, res) => {
+  res.render('shipping')
+})
+
+app.get("/returns", async (req, res) =>{
+  res.render('returns')
+})
+
+app.get("/privacy", async (req, res) =>{
+  res.render('privacy')
+})
 
 // --------------------
 // ERROR HANDLER

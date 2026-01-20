@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - DealDriven</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      margin-top: -10px;
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f1f1f;
+      margin-bottom: 30px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+    }
+
+    .faq-item h3 {
+      font-size: 16px;
+      color: #1f1f1f;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<%- include("navbar") %>
+<div class="faq-container">
+  <h1>Frequently Asked Questions (FAQ)</h1>
+
+  <div class="faq-item">
+    <h3>1. How do I place an order?</h3>
+    <p>You can browse our products and click on the "Buy Now" button for the item you wish to purchase. Follow the checkout instructions to complete your order quickly and securely.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>2. What payment methods are accepted?</h3>
+    <p>We accept all major payment methods including credit/debit cards, net banking, and popular digital wallets. All transactions are secure and encrypted.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>3. How can I track my order?</h3>
+    <p>After placing an order, you will receive a confirmation email with tracking details. You can use this information to monitor the delivery status of your products.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>4. What is your return/exchange policy?</h3>
+    <p>We accept returns or exchanges within a specified period after delivery. Products must be unused and in their original packaging. Please refer to our Returns & Refunds section for details.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>5. How do I contact customer support?</h3>
+    <p>You can reach our support team via email or phone. We are always ready to assist you with any inquiries, feedback, or issues.</p>
+  </div>
+
+</div>
+<%- include("footer") %>
+</body>
+</html>
