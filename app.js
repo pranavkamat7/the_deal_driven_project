@@ -23,62 +23,24 @@ app.use(express.static(path.join(__dirname, "public")));
 // --------------------
 // DATABASE CONNECTION
 // --------------------
-// async function main() {
-//   await mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log("MongoDB Atlas Connected"))
-//   .catch(err => console.error(err));
+async function main() {
+  await mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
+  .catch(err => console.error(err));
 
-// }
-// main().catch(err => console.log(err));
-mongoose.set("bufferCommands", false);
+}
+main().catch(err => console.log(err));
 
-mongoose.connect(process.env.MONGO_URI, {
-  serverSelectionTimeoutMS: 5000,
-})
-.then(() => {
-  console.log("✅ MongoDB Atlas Connected");
-})
-.catch(err => {
-  console.error("❌ MongoDB connection error:", err.message);
-});
-
-// 🚀 ALWAYS START SERVER (Hostinger requirement)
-app.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}`);
-});
 
 
 
 // --------------------
 // ROUTES
 // --------------------
-// app.get("/", async(req, res) => {
-//   // res.send("Working");
-//   let products = await Product.find({})
-//   res.render("Home",{products})
-// });
-
-app.get("/", async (req, res, next) => {
-  try {
-    //  DB not ready yet
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(503).render("HomeNoProducts", {
-        products: [],
-        dbDown: true
-      });
-    }
-
-    const products = await Product.find({});
-
-    if (!products || products.length === 0) {
-      return res.render("HomeNoProducts", { products: [] });
-    }
-
-    res.render("Home", { products });
-
-  } catch (err) {
-    next(err);
-  }
+app.get("/", async(req, res) => {
+  // res.send("Working");
+  let products = await Product.find({})
+  res.render("Home",{products})
 });
 
 // --------------------
@@ -92,23 +54,15 @@ app.get("/admin", (req, res) => {
 
 // Admin Login Logic
 
+
+
 app.post("/admin/login", async (req, res, next) => {
   try {
-    // ✅ BLOCK if DB not connected yet
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(503).render("admin/adminLogin", {
-        error: "Server is starting, please try again in a few seconds"
-      });
-    }
-
     const { username, password } = req.body;
 
     const admin = await Admin.findOne({ username });
-
     if (!admin || admin.password !== password) {
-      return res.status(401).render("admin/adminLogin", {
-        error: "Invalid username or password"
-      });
+      return next(new ExpressError(401, "Invalid Username or Password"));
     }
 
     res.redirect("/admin/dashboard");
@@ -116,21 +70,6 @@ app.post("/admin/login", async (req, res, next) => {
     next(err);
   }
 });
-
-// app.post("/admin/login", async (req, res, next) => {
-//   try {
-//     const { username, password } = req.body;
-
-//     const admin = await Admin.findOne({ username });
-//     if (!admin || admin.password !== password) {
-//       return next(new ExpressError(401, "Invalid Username or Password"));
-//     }
-
-//     res.redirect("/admin/dashboard");
-//   } catch (err) {
-//     next(err);
-//   }
-// });
 
 // --------------------
 // ADMIN DASHBOARD
@@ -237,6 +176,6 @@ app.use((err, req, res, next) => {
 // --------------------
 // SERVER
 // --------------------
-// app.listen(port, () => {
-//   console.log(`Server running on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
