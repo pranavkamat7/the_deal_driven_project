@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 async function main() {
-  const uri = process.env.MONGO_URI;
+  const uri = "mongodb+srv://dealdriven30_db_user:ronitkishannewwada@cluster0.cak0bs8.mongodb.net/TheDealDriven?retryWrites=true&w=majority";
 
   if (!uri) {
     console.error("CRITICAL ERROR: MONGO_URI is not defined in environment variables.");
