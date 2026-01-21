@@ -30,24 +30,23 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // }
 // main().catch(err => console.log(err));
-
 mongoose.set("bufferCommands", false);
 
 mongoose.connect(process.env.MONGO_URI, {
   serverSelectionTimeoutMS: 5000,
-  socketTimeoutMS: 45000,
-  tls: true,
 })
 .then(() => {
-  console.log(" MongoDB Atlas Connected");
-
-  app.listen(port, "0.0.0.0", () => {
-    console.log(` Server running on port ${port}`);
-  });
+  console.log("✅ MongoDB Atlas Connected");
 })
 .catch(err => {
-  console.error(" MongoDB connection failed:", err);
+  console.error("❌ MongoDB connection error:", err.message);
 });
+
+// 🚀 ALWAYS START SERVER (Hostinger requirement)
+app.listen(port, () => {
+  console.log(`🚀 Server running on port ${port}`);
+});
+
 
 
 // --------------------
