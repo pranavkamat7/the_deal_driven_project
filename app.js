@@ -1,4 +1,5 @@
-// require("dotenv").config();
+require("dotenv").config();
+console.log("Checking MONGO_URI:", process.env.MONGO_URI ? "Found" : "NOT FOUND");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -24,17 +25,21 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 async function main() {
+  const uri = process.env.MONGO_URI;
+
+  if (!uri) {
+    console.error("CRITICAL ERROR: MONGO_URI is not defined in environment variables.");
+    return; // Stop the function so it doesn't try to connect with 'undefined'
+  }
+
   try {
-    // Adding 'family: 4' forces IPv4, which is often required on Hostinger
-    await mongoose.connect(process.env.MONGO_URI, { 
-        family: 4 
-    });
-    console.log("MongoDB Atlas Connected Successfully");
+    await mongoose.connect(uri, { family: 4 });
+    console.log("MongoDB Atlas Connected");
   } catch (err) {
-    console.error("MongoDB Connection Error: ", err);
-    // This will show the actual error in your Hostinger build logs
+    console.error("Database connection error:", err);
   }
 }
+
 main().catch(err => console.log(err));
 
 
