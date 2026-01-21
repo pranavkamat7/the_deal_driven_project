@@ -24,10 +24,16 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 async function main() {
-  await mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Atlas Connected"))
-  .catch(err => console.error(err));
-
+  try {
+    // Adding 'family: 4' forces IPv4, which is often required on Hostinger
+    await mongoose.connect(process.env.MONGO_URI, { 
+        family: 4 
+    });
+    console.log("MongoDB Atlas Connected Successfully");
+  } catch (err) {
+    console.error("MongoDB Connection Error: ", err);
+    // This will show the actual error in your Hostinger build logs
+  }
 }
 main().catch(err => console.log(err));
 
