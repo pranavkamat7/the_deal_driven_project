@@ -1,3 +1,6 @@
+
+console.log("MONGO_URI:", process.env.MONGO_URI);
+
 require("dotenv").config();
 const express = require("express");
 const app = express();
