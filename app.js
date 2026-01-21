@@ -25,19 +25,11 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 async function main() {
-  const uri = "mongodb+srv://dealdriven30_db_user:ronitkishannewwada@cluster0.cak0bs8.mongodb.net/TheDealDriven?retryWrites=true&w=majority";
 
-  if (!uri) {
-    console.error("CRITICAL ERROR: MONGO_URI is not defined in environment variables.");
-    return; // Stop the function so it doesn't try to connect with 'undefined'
-  }
+  await mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
+  .catch(err => console.error(err));
 
-  try {
-    await mongoose.connect(uri, { family: 4 });
-    console.log("MongoDB Atlas Connected");
-  } catch (err) {
-    console.error("Database connection error:", err);
-  }
 }
 
 main().catch(err => console.log(err));
