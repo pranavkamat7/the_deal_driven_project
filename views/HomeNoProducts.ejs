@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>No Products</title>
+</head>
+<body>
+  <h2>No products available</h2>
+
+  <% if (typeof dbDown !== "undefined" && dbDown) { %>
+    <p style="color:red;">Database temporarily unavailable</p>
+  <% } %>
+</body>
+</html>
