@@ -52,10 +52,33 @@ app.listen(port, () => {
 // --------------------
 // ROUTES
 // --------------------
-app.get("/", async(req, res) => {
-  // res.send("Working");
-  let products = await Product.find({})
-  res.render("Home",{products})
+// app.get("/", async(req, res) => {
+//   // res.send("Working");
+//   let products = await Product.find({})
+//   res.render("Home",{products})
+// });
+
+app.get("/", async (req, res, next) => {
+  try {
+    //  DB not ready yet
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).render("HomeNoProducts", {
+        products: [],
+        dbDown: true
+      });
+    }
+
+    const products = await Product.find({});
+
+    if (!products || products.length === 0) {
+      return res.render("HomeNoProducts", { products: [] });
+    }
+
+    res.render("Home", { products });
+
+  } catch (err) {
+    next(err);
+  }
 });
 
 // --------------------
