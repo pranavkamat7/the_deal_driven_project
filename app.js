@@ -20,34 +20,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("MongoDB Atlas Connected");
-    console.log("DB Name:", mongoose.connection.name);
-
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  })
-  .catch(err => {
-    console.error("MongoDB connection failed:", err);
-  });
-
-  mongoose.connection.on("error", err => {
-  console.error("Mongoose error:", err);
-});
-
 
 // --------------------
 // DATABASE CONNECTION
 // --------------------
-// async function main() {
-//   await mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log("MongoDB Atlas Connected"))
-//   .catch(err => console.error(err));
+async function main() {
+  await mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
+  .catch(err => console.error(err));
 
-// }
-// main().catch(err => console.log(err));
+}
+main().catch(err => console.log(err));
 
 // --------------------
 // ROUTES
@@ -188,6 +171,6 @@ app.use((err, req, res, next) => {
 // --------------------
 // SERVER
 // --------------------
-// app.listen(port, () => {
-//   console.log(`Server running on port ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
