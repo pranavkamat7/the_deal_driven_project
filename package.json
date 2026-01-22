@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "the-deal-driven",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -14,9 +14,9 @@
   "license": "ISC",
   "author": "Pranav&Kaushik",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "dependencies": {
