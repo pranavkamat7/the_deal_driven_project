@@ -43,7 +43,7 @@ async function main() {
 main().catch(console.error);
 
 
-app.get("/test-env", (req, res) => {
+app.get("/test", (req, res) => {
   res.json({
     hasUri:  process.env.MONGO_URI,
     nodeEnv: process.env.NODE_ENV,
