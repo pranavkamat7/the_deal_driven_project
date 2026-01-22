@@ -1,6 +1,9 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+
+if (!process.env.MONGO_URI) {
+  console.error("MONGO_URI is missing");
+  process.exit(1);
 }
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
