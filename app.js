@@ -1,4 +1,5 @@
 
+require('dotenv').config();
 if (!process.env.MONGO_URI) {
   console.error("MONGO_URI is missing");
   process.exit(1);
@@ -8,7 +9,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
-
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
