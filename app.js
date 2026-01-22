@@ -1,15 +1,16 @@
 
-require('dotenv').config();
-if (!process.env.MONGO_URI) {
-  console.error("MONGO_URI is missing");
-  process.exit(1);
-}
+const path = require("path");
+require('dotenv').config(); 
 
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const path = require("path");
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error("DEBUG: MONGO_URI is currently undefined in process.env");
+}
 
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
