@@ -46,7 +46,7 @@ main().catch(console.error);
 app.get("/", async(req, res) => {
   // res.send("Working");
   let products = await Product.find({})
-  res.render("Home",{products})
+  res.render("home.ejs",{products})
 });
 
 
@@ -141,7 +141,7 @@ app.get("/search", async (req, res) => {
         });
 
       
-        res.render("home", { products }); 
+        res.render("home.ejs", { products }); 
         
     } catch (err) {
         console.error(err);
@@ -150,27 +150,27 @@ app.get("/search", async (req, res) => {
 });
 
 app.get("/about", async (req, res) => {
-  res.render('about')
+  res.render('about.ejs')
 })
 
 app.get("/contact", async (req, res) => {
-  res.render('contact')
+  res.render('contact.ejs')
 })
 
 app.get("/faq", async (req, res) => {
-  res.render('faq')
+  res.render('faq.ejs')
 })
 
 app.get("/shipping", async (req, res) => {
-  res.render('shipping')
+  res.render('shipping.ejs')
 })
 
 app.get("/returns", async (req, res) =>{
-  res.render('returns')
+  res.render('returns.ejs')
 })
 
 app.get("/privacy", async (req, res) =>{
-  res.render('privacy')
+  res.render('privacy.ejs')
 })
 
 // --------------------
