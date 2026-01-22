@@ -1,5 +1,7 @@
-require("dotenv").config();
-console.log("Checking MONGO_URI:", process.env.MONGO_URI ? "Found" : "NOT FOUND");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -24,18 +26,17 @@ app.use(express.static(path.join(__dirname, "public")));
 // --------------------
 // DATABASE CONNECTION
 // --------------------
+
+console.log("MONGO_URI VALUE:", process.env.MONGO_URI);
+
 async function main() {
-
-  await mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Atlas Connected"))
-  .catch(err => console.error(err));
-
+  await mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000
+  });
+  console.log("MongoDB Atlas Connected");
 }
 
-main().catch(err => console.log(err));
-
-
-
+main().catch(console.error);
 
 // --------------------
 // ROUTES
