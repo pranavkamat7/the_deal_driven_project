@@ -1,10 +1,17 @@
 
 const path = require("path");
+// Try to load from .env if it exists, but don't crash if it doesn't
 require('dotenv').config(); 
 
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error("DEBUG: MONGO_URI is currently undefined in process.env");
+}
 
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
@@ -25,13 +32,26 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 
+console.log("MONGO_URI VALUE:", process.env.MONGO_URI);
+
 async function main() {
-  await mongoose.connect(process.env.NODE_ENV, {
+  await mongoose.connect(process.env.MONGO_URI, {
     serverSelectionTimeoutMS: 5000
   });
   console.log("MongoDB Atlas Connected");
 }
 main().catch(console.error);
+
+
+app.get("/test-env", (req, res) => {
+  res.json({
+    hasUri:  process.env.MONGO_URI,
+    nodeEnv: process.env.NODE_ENV,
+    urlPranav: process.env.PRANAV,
+    msg: "If hasUri is false, Hostinger settings are not reaching the app."
+  });
+});
+
 
 // --------------------
 // ROUTES
@@ -42,13 +62,8 @@ app.get("/", async(req, res) => {
   res.render("Home",{products})
 });
 
-app.get("/test-env", (req, res) => {
-  res.json({
-    hasUri: !!process.env.MONGO_URI,
-    nodeEnv: process.env.NODE_ENV,
-    msg: "If hasUri is false, Hostinger settings are not reaching the app."
-  });
-});
+
+
 // --------------------
 // ADMIN AUTH
 // --------------------
