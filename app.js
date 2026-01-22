@@ -6,12 +6,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
-const MONGO_URI = process.env.MONGO_URI;
-
-if (!MONGO_URI) {
-  console.error("DEBUG: MONGO_URI is currently undefined in process.env");
-}
-
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
 const Admin = require("./models/admin");
@@ -31,10 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // DATABASE CONNECTION
 // --------------------
 
-console.log("MONGO_URI VALUE:", process.env.MONGO_URI);
-
 async function main() {
-  await mongoose.connect(process.env.MONGO_URI, {
+  await mongoose.connect(process.env.NODE_ENV, {
     serverSelectionTimeoutMS: 5000
   });
   console.log("MongoDB Atlas Connected");
