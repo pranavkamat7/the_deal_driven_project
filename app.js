@@ -1,4 +1,6 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -32,7 +34,6 @@ async function main() {
   });
   console.log("MongoDB Atlas Connected");
 }
-
 main().catch(console.error);
 
 // --------------------
