@@ -50,6 +50,13 @@ app.get("/", async(req, res) => {
   res.render("Home",{products})
 });
 
+app.get("/test-env", (req, res) => {
+  res.json({
+    hasUri: !!process.env.MONGO_URI,
+    nodeEnv: process.env.NODE_ENV,
+    msg: "If hasUri is false, Hostinger settings are not reaching the app."
+  });
+});
 // --------------------
 // ADMIN AUTH
 // --------------------
