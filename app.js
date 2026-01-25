@@ -7,8 +7,9 @@ const app = express();
 const mongoose = require("mongoose");
 
 const MONGO_URI = process.env.MONGO_URI;
+const favicon = require("serve-favicon");
 
-
+app.use(favicon(path.join(__dirname, "public", "favicon.png")));
 
 const port = process.env.PORT || 8080;
 const ExpressError = require("./ExpressError");
