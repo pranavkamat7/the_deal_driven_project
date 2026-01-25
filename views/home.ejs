@@ -28,6 +28,33 @@
     <!-- NAVBAR -->
     <%- include("navbar") %>
 
+      <!-- ================= CATEGORY BAR ================= -->
+      <div class="category-bar">
+        <div class="category-scroll">
+
+          <a href="/" class="category-item <%= selectedCategory === 'all' ? 'active' : '' %>">
+            All
+          </a>
+
+
+          <% const categories=[ { key: "electronics" , label: "Electronics" }, { key: "mobiles" , label: "Mobiles" }, {
+            key: "fashion" , label: "Fashion" }, { key: "home-kitchen" , label: "Home & Kitchen" }, { key: "beauty" ,
+            label: "Beauty" }, { key: "grocery" , label: "Grocery" }, { key: "sports" , label: "Sports" }, {
+            key: "books" , label: "Books" }, { key: "furniture" , label: "Furniture" }, { key: "others" , label: "More"
+            } ]; %>
+
+
+            <% categories.forEach(cat=> { %>
+              <a href="/?category=<%= cat.key %>"
+                class="category-item <%= selectedCategory === cat.key ? 'active' : '' %>">
+                <%= cat.label %>
+              </a>
+              <% }) %>
+
+        </div>
+      </div>
+
+
       <!-- ================= SLIDER ================= -->
       <section class="auto-slider">
         <div class="slider-track">
@@ -48,7 +75,7 @@
 
         <div class="products" id="productList">
           <% if (products.length===0) { %>
-            <p class="no-products">No products found</p>
+            <p class="no-products" style="width: 100%;">No products found in this category. Sorry for the inconvenience.😞</p>
             <% } else { %>
               <% products.forEach((product, index)=> { %>
                 <div class="product-card <%= index >= 5 ? 'd-none extra-product' : '' %>">
@@ -56,7 +83,9 @@
                     <img src="<%= product.image %>" alt="<%= product.name %>">
                   </div>
                   <p class="product-name">
-                    <b><%= product.name %></b>
+                    <b>
+                      <%= product.name %>
+                    </b>
                   </p>
                   <p class="product-name pb-5">
                     <%= product.description %>
@@ -140,28 +169,38 @@
 
 
   <script>
-  const toggleBtn = document.getElementById("toggleProductsBtn");
-  const extraProducts = document.querySelectorAll(".extra-product");
+    const toggleBtn = document.getElementById("toggleProductsBtn");
+    const extraProducts = document.querySelectorAll(".extra-product");
 
-  let expanded = false;
+    let expanded = false;
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      expanded = !expanded;
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        expanded = !expanded;
 
-      extraProducts.forEach(product => {
-        product.classList.toggle("d-none", !expanded);
+        extraProducts.forEach(product => {
+          product.classList.toggle("d-none", !expanded);
+        });
+
+        toggleBtn.innerText = expanded ? "View Less" : "View More";
+
+        if (!expanded) {
+          document.getElementById("productList")
+            .scrollIntoView({ behavior: "smooth" });
+        }
       });
+    }
+  </script>
+  <script>
+    const activeCategory = document.querySelector(".category-item.active");
+    if (activeCategory) {
+      activeCategory.scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
+    }
+  </script>
 
-      toggleBtn.innerText = expanded ? "View Less" : "View More";
-
-      if (!expanded) {
-        document.getElementById("productList")
-          .scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  }
-</script>
 
 
 

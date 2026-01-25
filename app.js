@@ -43,11 +43,23 @@ main().catch(console.error);
 // --------------------
 // ROUTES
 // --------------------
-app.get("/", async(req, res) => {
-  // res.send("Working");
-  let products = await Product.find({})
-  res.render("home.ejs",{products})
+app.get("/", async (req, res) => {
+  const { category } = req.query;
+
+  let filter = {};
+  if (category) {
+    filter.category = category;
+  }
+
+  const products = await Product.find(filter);
+
+  res.render("home", {
+    products,
+    selectedCategory: category || "all"
+  });
 });
+
+
 
 
 
