@@ -53,13 +53,24 @@ app.get("/", async (req, res) => {
 
   const products = await Product.find(filter);
 
-  res.render("home", {
+  res.render("home.ejs", {
     products,
     selectedCategory: category || "all"
   });
 });
 
 
+//product details route
+app.get("/products/:id", async (req, res, next) => {
+  const { id } = req.params;
+
+  const product = await Product.findById(id);
+  if (!product) {
+    return next(new ExpressError(404, "Product not found"));
+  }
+
+  res.render("showProduct.ejs", { product });
+});
 
 
 

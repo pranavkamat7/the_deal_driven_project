@@ -75,7 +75,8 @@
 
         <div class="products" id="productList">
           <% if (products.length===0) { %>
-            <p class="no-products" style="width: 100%;">No products found in this category. Sorry for the inconvenience.😞</p>
+            <p class="no-products" style="width: 100%;">No products found in this category. Sorry for the
+              inconvenience.😞</p>
             <% } else { %>
               <% products.forEach((product, index)=> { %>
                 <div class="product-card <%= index >= 5 ? 'd-none extra-product' : '' %>">
@@ -93,7 +94,10 @@
                   <br>
                   <p class="product-price">₹ <%= product.price %>
                   </p>
-                  <a href="<%= product.link %>" class="btn btn-primary w-100">Buy Now</a>
+                  <a href="/products/<%= product._id %>" class="btn btn-outline-primary w-100">
+                    View Details
+                  </a>
+
                 </div>
                 <% }) %>
                   <% } %>
