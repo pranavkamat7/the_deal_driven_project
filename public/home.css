@@ -282,3 +282,11 @@ body {
   background: #0d6efd;
   color: #fff;
 }
+
+
+@media (max-width: 768px) {
+  .category-bar {
+  top: 75px; 
+  
+}
+}
