@@ -22,7 +22,35 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   category: {
-    type: String
+    type: String,
+    enum: [
+    "electronics",
+    "mobiles",
+    "computers",
+    "home-kitchen",
+    "fashion",
+    "mens-clothing",
+    "womens-clothing",
+    "footwear",
+    "beauty",
+    "health",
+    "grocery",
+    "books",
+    "stationery",
+    "toys",
+    "sports",
+    "automotive",
+    "furniture",
+    "home-improvement",
+    "jewellery",
+    "watches",
+    "bags",
+    "pets",
+    "media",
+    "garden",
+    "industrial",
+    "others"
+  ]
   },
   createdAt: {
     type: Date,

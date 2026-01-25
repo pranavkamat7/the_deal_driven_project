@@ -130,6 +130,28 @@ app.post("/admin/products/:id/delete", async (req, res, next) => {
   }
 });
 
+//update product
+app.get("/admin/products/:id/edit", async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  res.render("admin/editProduct", { product });
+});
+
+app.post("/admin/products/:id/edit", async (req, res) => {
+  const { id } = req.params;
+
+  await Product.findByIdAndUpdate(id, {
+    name: req.body.name,
+    description: req.body.description,
+    link: req.body.link,
+    price: req.body.price,
+    image: req.body.image,
+    category: req.body.category
+  });
+
+  res.redirect("/admin/dashboard");
+});
+
+
 app.get("/search", async (req, res) => {
     try {
         const { query } = req.query; 

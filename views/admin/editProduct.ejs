@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Product</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+<div class="container">
+
+  <div class="card dashboard-header">
+    <h2>Edit Product</h2>
+    <a href="/admin/dashboard" class="btn">← Back</a>
+  </div>
+
+  <div class="card">
+    <form action="/admin/products/<%= product._id %>/edit" method="POST">
+
+      <label>Product Name</label>
+      <input type="text" name="name" value="<%= product.name %>" required />
+
+      <label>Description</label>
+      <textarea name="description" required><%= product.description %></textarea>
+
+      <label>Product Link</label>
+      <input type="url" name="link" value="<%= product.link %>" required />
+
+      <label>Price</label>
+      <input type="number" name="price" value="<%= product.price %>" required />
+
+      <label>Image URL</label>
+      <input type="url" name="image" value="<%= product.image %>" required />
+
+      <label>Category</label>
+      <select name="category" required
+        style="width:100%; padding:10px; border-radius:6px; margin-bottom:10px;">
+        
+        <option value="">-- Select Category --</option>
+
+        <% const categories = [
+          "electronics","mobiles","computers","home-kitchen","fashion",
+          "mens-clothing","womens-clothing","footwear","beauty","health",
+          "grocery","books","stationery","toys","sports","automotive",
+          "furniture","home-improvement","jewellery","watches","bags",
+          "pets","media","garden","industrial","others"
+        ]; %>
+
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat %>" <%= product.category === cat ? "selected" : "" %>>
+            <%= cat.replace("-", " ").toUpperCase() %>
+          </option>
+        <% }) %>
+
+      </select>
+
+      <button type="submit" class="btn">Update Product</button>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>
