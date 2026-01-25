@@ -177,23 +177,24 @@ app.post("/admin/products/:id/edit", async (req, res) => {
 
 
 app.get("/search", async (req, res) => {
-    try {
-        const { query } = req.query; 
-        if (!query) return res.redirect("/"); 
+  try {
+    const { query } = req.query; 
+    if (!query) return res.redirect("/");
 
-        
-        const products = await Product.find({
-            name: { $regex: query, $options: "i" } 
-        });
+    const products = await Product.find({
+      name: { $regex: query, $options: "i" }
+    });
 
-      
-        res.render("home.ejs", { products }); 
-        
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Server error");
-    }
+    res.render("home.ejs", {
+      products,
+      selectedCategory: "all" 
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 });
+
 
 app.get("/about", async (req, res) => {
   res.render('about.ejs')

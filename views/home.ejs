@@ -152,25 +152,39 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    let timeLeft = 5;
-    const countdownEl = document.getElementById("countdown");
     const overlay = document.getElementById("loadingOverlay");
+    const countdownEl = document.getElementById("countdown");
 
-    const timer = setInterval(() => {
-      timeLeft--;
+    // Check if loader has been shown before
+    const loaderShown = localStorage.getItem("loaderShown");
+
+    if (!loaderShown) {
+      // Mark loader as shown
+      localStorage.setItem("loaderShown", "true");
+
+      let timeLeft = 5;
       countdownEl.innerText = timeLeft;
 
-      if (timeLeft === 0) {
-        clearInterval(timer);
-        overlay.style.opacity = "0";
-        overlay.style.pointerEvents = "none";
+      const timer = setInterval(() => {
+        timeLeft--;
+        countdownEl.innerText = timeLeft;
 
-        setTimeout(() => {
-          overlay.style.display = "none";
-        }, 400);
-      }
-    }, 1000);
+        if (timeLeft === 0) {
+          clearInterval(timer);
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 400);
+        }
+      }, 1000);
+    } else {
+      // Loader already shown, hide immediately
+      overlay.style.display = "none";
+    }
   </script>
+
 
 
   <script>
